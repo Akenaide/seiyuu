@@ -7,11 +7,15 @@
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
+import os
 
 BOT_NAME = 'seiyuu'
 
 SPIDER_MODULES = ['seiyuu.spiders']
 NEWSPIDER_MODULE = 'seiyuu.spiders'
 
+COOKIES_ENABLED = False
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'seiyuu (+http://www.yourdomain.com)'
