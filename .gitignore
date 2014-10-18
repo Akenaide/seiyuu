@@ -42,3 +42,5 @@ env*
 
 .webassets-cache
 *.sublime-*
+
+*.sqlite3
