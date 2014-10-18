@@ -11,8 +11,8 @@ import os
 
 BOT_NAME = 'seiyuu'
 
-SPIDER_MODULES = ['seiyuu.spiders']
-NEWSPIDER_MODULE = 'seiyuu.spiders'
+SPIDER_MODULES = ['crawl.spiders']
+NEWSPIDER_MODULE = 'crawl.spiders'
 
 COOKIES_ENABLED = False
 

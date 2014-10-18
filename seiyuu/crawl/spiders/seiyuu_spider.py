@@ -4,9 +4,9 @@ import os
 import scrapy
 from scrapy import log
 
-from seiyuu import settings
-from seiyuu.items import SeiyuuItem
-from seiyuu import tools
+from crawl import settings
+from crawl.items import SeiyuuItem
+from crawl import tools
 
 class SeiSpider(scrapy.Spider):
     name = "seiyuu"
