@@ -6,9 +6,15 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.contrib.djangoitem import DjangoItem
 
+from webfw.seiyuu_mgr.models import Seiyuu, Anime, Character
 
-class SeiyuuItem(scrapy.Item):
-    name = scrapy.Field()
-    character = scrapy.Field()
-    anime = scrapy.Field()
+class SeiyuuItem(DjangoItem):
+    django_model = Seiyuu
+
+class AnimeItem(DjangoItem):
+    django_model = Anime
+
+class CharacterItem(DjangoItem):
+    django_model = Character

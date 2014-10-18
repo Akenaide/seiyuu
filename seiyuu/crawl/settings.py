@@ -13,7 +13,7 @@ BOT_NAME = 'seiyuu'
 
 SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
-
+os.environ['DJANGO_SETTINGS_MODULE'] = 'webfw.settings'
 COOKIES_ENABLED = False
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
