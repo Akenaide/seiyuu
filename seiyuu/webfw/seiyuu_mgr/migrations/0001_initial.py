@@ -27,6 +27,8 @@ class Migration(migrations.Migration):
             name='Character',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('first_name', models.CharField(max_length=30)),
+                ('last_name', models.CharField(max_length=30)),
                 ('season', models.CharField(max_length=200)),
                 ('status', models.CharField(max_length=200, choices=[(b'MAIN', b'main'), (b'SUPPORT', b'support')])),
                 ('page_link', models.URLField()),

@@ -19,6 +19,8 @@ class Character(models.Model):
         ("MAIN", "main"),
         ("SUPPORT", "support")
     )
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
     seiyuu = models.ForeignKey('Seiyuu')
     anime = models.ForeignKey('Anime')
     season = models.CharField(max_length=200)
