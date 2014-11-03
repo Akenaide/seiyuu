@@ -37,6 +37,20 @@ class SeiyuuPipeline(object):
         elif isinstance(item, AnimeItem):
             return self.process_anime(item, spider)
 
+class DuplicatesPipeline(object):
+
+    def process_seiyuu(self, item, spider):
+        data = item.as_dict()
+        current = Seiyuu.objects.filter(
+                    first_name=data.get('first_name', "noname"),
+                    last_name=data.get('last_name', "noname")
+                    )
+
+        if current.exists():
+            raise DropItem
+        else:
+            return item
+
     def process_character(self, item, spider):
         return item
 
