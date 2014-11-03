@@ -10,11 +10,15 @@ from scrapy.contrib.djangoitem import DjangoItem
 
 from webfw.seiyuu_mgr.models import Seiyuu, Anime, Character
 
-class SeiyuuItem(DjangoItem):
+class MyItem(DjangoItem):
+    def as_dict(self):
+        return dict((k, self.get(k)) for k in self._values)
+
+class SeiyuuItem(MyItem):
     django_model = Seiyuu
 
-class AnimeItem(DjangoItem):
+class AnimeItem(MyItem):
     django_model = Anime
 
-class CharacterItem(DjangoItem):
+class CharacterItem(MyItem):
     django_model = Character
