@@ -8,11 +8,17 @@ class Seiyuu(models.Model):
     page_link = models.URLField()
     image_link = models.URLField()
 
+    def __unicode__(self):
+        return u"%s %s" % (self.first_name, self.last_name)
+
 class Anime(models.Model):
     name = models.CharField(max_length=255)
     start_time = models.DateField()
     page_link = models.URLField()
     image_link = models.URLField()
+
+    def __unicode__(self):
+        return u"%s" % self.name
 
 class Character(models.Model):
     STATUS = (
@@ -28,3 +34,6 @@ class Character(models.Model):
     page_link = models.URLField()
     image_link = models.URLField()
     last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
+
+    def __unicode__(self):
+        return u"%s %s" % (self.first_name, self.last_name)
