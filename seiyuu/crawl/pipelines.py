@@ -4,7 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
+from dateutil import parser as dateparser
 from scrapy.exceptions import DropItem
 
 from crawl.items import SeiyuuItem
@@ -13,6 +13,7 @@ from crawl.items import AnimeItem
 from webfw.seiyuu_mgr.models import Seiyuu
 from webfw.seiyuu_mgr.models import Anime
 from webfw.seiyuu_mgr.models import Character
+
 
 class SeiyuuPipeline(object):
     def process_seiyuu(self, item, spider):
@@ -25,6 +26,10 @@ class SeiyuuPipeline(object):
         return item
 
     def process_anime(self, item, spider):
+        data = item.as_dict()
+        data['start_time'] = dateparser.parse(data['start_time'])
+        anime = Anime(**data)
+        anime.save()
         return item
 
     def process_item(self, item, spider):
@@ -38,6 +43,7 @@ class SeiyuuPipeline(object):
             return self.process_anime(item, spider)
 
 class DuplicatesPipeline(object):
+
 
     def process_seiyuu(self, item, spider):
         data = item.as_dict()
@@ -55,7 +61,15 @@ class DuplicatesPipeline(object):
         return item
 
     def process_anime(self, item, spider):
-        return item
+        data = item.as_dict()
+        current = Anime.objects.filter(
+                    name=data.get('name', "noname"),
+                    )
+
+        if current.exists():
+            raise DropItem
+        else:
+            return item
 
     def process_item(self, item, spider):
         if isinstance(item, SeiyuuItem):

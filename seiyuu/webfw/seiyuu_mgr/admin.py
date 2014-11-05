@@ -10,3 +10,7 @@ class SeiyuuAdmin(admin.ModelAdmin):
 
 admin.site.register(Seiyuu, SeiyuuAdmin)
 
+class AnimeAdmin(admin.ModelAdmin):
+    list_display = ("pk", "name",)
+
+admin.site.register(Anime, AnimeAdmin)
