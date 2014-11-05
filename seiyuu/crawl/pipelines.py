@@ -24,6 +24,14 @@ class SeiyuuPipeline(object):
         return item
 
     def process_character(self, item, spider):
+        data = item.as_dict()
+        seiyuu = Seiyuu.objects.get(first_name=data["seiyuu"]['first_name'])
+        anime = Anime.objects.get(name=data["anime"]["name"])
+
+        data["seiyuu"], data["anime"] = seiyuu, anime
+        if data['first_name']:
+            character = Character(**data)
+            character.save()
         return item
 
     def process_anime(self, item, spider):

@@ -14,3 +14,7 @@ class AnimeAdmin(admin.ModelAdmin):
     list_display = ("pk", "name",)
 
 admin.site.register(Anime, AnimeAdmin)
+
+class CharacterAdmin(admin.ModelAdmin):
+    list_display = ("pk", "first_name",)
+admin.site.register(Character, CharacterAdmin)
