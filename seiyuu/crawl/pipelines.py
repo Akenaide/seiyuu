@@ -25,7 +25,11 @@ class SeiyuuPipeline(object):
 
     def process_character(self, item, spider):
         data = item.as_dict()
-        seiyuu = Seiyuu.objects.get(first_name=data["seiyuu"]['first_name'])
+        try:
+            seiyuu = Seiyuu.objects.get(first_name=data["seiyuu"]['first_name'],
+                    last_name=data["seiyuu"]["last_name"])
+        except Seiyuu.DoesNotExist:
+            seiyuu = None
         anime = Anime.objects.get(name=data["anime"]["name"])
 
         data["seiyuu"], data["anime"] = seiyuu, anime
@@ -52,8 +56,6 @@ class SeiyuuPipeline(object):
             return self.process_anime(item, spider)
 
 class DuplicatesPipeline(object):
-
-
     def process_seiyuu(self, item, spider):
         data = item.as_dict()
         current = Seiyuu.objects.filter(

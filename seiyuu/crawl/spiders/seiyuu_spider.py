@@ -27,7 +27,8 @@ class SeiSpider(scrapy.Spider):
     if os.path.isfile(urls_path):
         urls = open(urls_path, 'rb').readlines()
         for url in urls:
-            start_urls.append(tools.get_google_cache(url))
+            if url.strip():
+                start_urls.append(tools.get_google_cache(url.strip()))
     else:
         raise OSError(urls_path, 'not found please create it')
 

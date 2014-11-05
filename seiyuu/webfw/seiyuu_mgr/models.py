@@ -27,7 +27,7 @@ class Character(models.Model):
     )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    seiyuu = models.ForeignKey('Seiyuu')
+    seiyuu = models.ForeignKey('Seiyuu', null=True)
     anime = models.ForeignKey('Anime')
     season = models.CharField(max_length=200)
     status = models.CharField(max_length=200, choices=STATUS)
