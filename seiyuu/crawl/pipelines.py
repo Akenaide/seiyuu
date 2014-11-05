@@ -18,8 +18,9 @@ from webfw.seiyuu_mgr.models import Character
 class SeiyuuPipeline(object):
     def process_seiyuu(self, item, spider):
         data = item.as_dict()
-        seiyuu = Seiyuu(**data)
-        seiyuu.save()
+        if data["first_name"]:
+            seiyuu = Seiyuu(**data)
+            seiyuu.save()
         return item
 
     def process_character(self, item, spider):
