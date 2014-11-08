@@ -12,9 +12,11 @@ from scrapy.exceptions import DropItem
 from crawl.items import SeiyuuItem
 from crawl.items import CharacterItem
 from crawl.items import AnimeItem
+from crawl import tools
 from webfw.seiyuu_mgr.models import Seiyuu
 from webfw.seiyuu_mgr.models import Anime
 from webfw.seiyuu_mgr.models import Character
+from webfw.seiyuu_mgr.models import Season
 
 date_format = re.compile(r"(.*20[0-9]+)")
 
@@ -35,6 +37,8 @@ class SeiyuuPipeline(object):
         except Seiyuu.DoesNotExist:
             seiyuu = None
         anime = Anime.objects.get(name=data["anime"]["name"])
+        data.pop("anime", None)
+        data.pop("seiyuu", None)
 
         if data['first_name']:
             character = Character(**data)
@@ -50,6 +54,8 @@ class SeiyuuPipeline(object):
         find = date_format.search(start_time)
         if find:
             data['start_time'] = dateparser.parse(find.group())
+        season_label = tools.get_season(data['start_time'])
+        data["season"] = Season.objects.get_or_create(label=season_label)[0]
         anime = Anime(**data)
         anime.save()
         return item

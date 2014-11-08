@@ -21,4 +21,27 @@ def get_google_cache(url):
 
     return session.get(google_cache).url
 
+def get_season(date):
+    """
+    Guess in which season the given date is
+    :type date: datetime
+    """
 
+    doy = date.timetuple().tm_yday
+
+    # "day of year" ranges for the northern hemisphere
+    spring = xrange(80, 172)
+    summer = xrange(172, 264)
+    fall = xrange(264, 355)
+    # winter = everything else
+
+    if doy in spring:
+        season = 'spring'
+    elif doy in summer:
+        season = 'summer'
+    elif doy in fall:
+        season = 'fall'
+    else:
+        season = 'winter'
+
+    return "%s%i" % (season, date.year)
