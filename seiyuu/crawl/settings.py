@@ -15,7 +15,8 @@ SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
 os.environ['DJANGO_SETTINGS_MODULE'] = 'webfw.settings'
 COOKIES_ENABLED = False
-DOWNLOAD_DELAY = 2
+DOWNLOAD_DELAY = 10
+DEPTH_LIMIT = 1
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'seiyuu (+http://www.yourdomain.com)'
