@@ -17,7 +17,7 @@ class AnimeAdmin(admin.ModelAdmin):
 admin.site.register(Anime, AnimeAdmin)
 
 class CharacterAdmin(admin.ModelAdmin):
-    list_display = ("pk", "first_name",)
+    list_display = ("pk", "first_name", "last_name")
 admin.site.register(Character, CharacterAdmin)
 
 class SeasonAdmin(admin.ModelAdmin):

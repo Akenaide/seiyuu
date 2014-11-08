@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul class="list-inline">
+        {% for season in seasons %}
+            <li><a href="#">{{ season.label }}</a></li>
+        {% endfor %}
+    </ul>
+    <table class="table table-striped container-fluid">
+    {% for seiyuu in seiyuus %}
+    <tr class=" row">
+        <td class="col-md-1 seiyuu-link">
+            <a href="{{seiyuu.page_link}}">
+                <img src="{{seiyuu.image_link}}" alt="">
+            </a>
+        </td>
+        <td class="col-md-3">{{ seiyuu.full_name }}</td>
+        <td class="col-md-6">
+            <ul>
+                {% for character in seiyuu.character_set.all %}
+                <li>
+                    <a href="{{character.page_link}}">
+                        <img src="{{character.image_link}}" alt="">
+                        <strong>{{character.full_name}}</strong>
+                        ({{ character.anime.last}})
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

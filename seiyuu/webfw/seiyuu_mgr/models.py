@@ -7,6 +7,10 @@ class Seiyuu(models.Model):
     last_name = models.CharField(max_length=30)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
+    
+    @property
+    def full_name(self):
+        return u"%s %s" % (self.first_name, self.last_name)
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
@@ -34,6 +38,10 @@ class Character(models.Model):
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
     last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
+
+    @property
+    def full_name(self):
+        return u"%s %s" % (self.first_name, self.last_name)
 
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
