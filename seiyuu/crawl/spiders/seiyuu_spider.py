@@ -28,6 +28,7 @@ class SeiSpider(scrapy.Spider):
         urls = open(urls_path, 'rb').readlines()
         for url in urls:
             if url.strip():
+                # start_urls.append(url.strip())
                 start_urls.append(tools.get_google_cache(url.strip()))
     else:
         raise OSError(urls_path, 'not found please create it')
@@ -69,7 +70,7 @@ class SeiSpider(scrapy.Spider):
         anime = AnimeItem()
         character = CharacterItem()
 
-        anime['name'] = response.xpath('//div/h1/text()').extract()[0]
+        anime['name'] = response.xpath('//div/h1/text()').extract()[0].strip()
         anime['start_time'] = response.xpath("//div[span/text()='Aired:']/text()").extract()[0]
         anime['page_link'] = response.url
         anime['image_link'] = response.xpath("//table/tr").css("td.borderClass").css("div:nth-child(1)").xpath(".//img/@src").extract()[0]
@@ -83,15 +84,15 @@ class SeiSpider(scrapy.Spider):
 
             character_infos, seiyuu_infos = self.get_char_and_va_infos(table)
             seiyuu['page_link'] = seiyuu_infos.get('page_link', None)
-            seiyuu['last_name'] = seiyuu_infos.get('last_name', None)
-            seiyuu['first_name'] = seiyuu_infos.get('first_name', None)
+            seiyuu['last_name'] = seiyuu_infos.get('last_name', None).strip()
+            seiyuu['first_name'] = seiyuu_infos.get('first_name', None).strip()
             seiyuu['image_link'] = seiyuu_infos.get('image_link', None)
             yield seiyuu
             character['anime'] = anime
             character['seiyuu'] = seiyuu
             character['page_link'] = character_infos.get('page_link', None)
-            character['last_name'] = character_infos.get('last_name', None)
-            character['first_name'] = character_infos.get('first_name', None)
+            character['last_name'] = character_infos.get('last_name', None).strip()
+            character['first_name'] = character_infos.get('first_name', None).strip()
             character['image_link'] = character_infos.get('image_link', None)
             character['status'] = table.xpath(".//small/text()").extract()[0]
             yield character
