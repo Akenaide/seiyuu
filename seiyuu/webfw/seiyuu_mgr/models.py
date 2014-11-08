@@ -7,7 +7,7 @@ class Seiyuu(models.Model):
     last_name = models.CharField(max_length=30)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
-    
+
     @property
     def full_name(self):
         return u"%s %s" % (self.first_name, self.last_name)
@@ -27,8 +27,8 @@ class Anime(models.Model):
 
 class Character(models.Model):
     STATUS = (
-        ("MAIN", "main"),
-        ("SUPPORT", "support")
+        ("MAIN", "Main"),
+        ("SUPPORT", "Supporting")
     )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
