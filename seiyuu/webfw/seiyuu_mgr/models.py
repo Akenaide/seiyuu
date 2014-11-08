@@ -48,6 +48,7 @@ class Character(models.Model):
 
 class Season(models.Model):
     label = models.CharField(max_length=20)
+    starting_date = models.DateField()
 
     def __unicode__(self):
         return u"%s" % self.label

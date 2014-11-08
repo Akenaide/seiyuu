@@ -54,8 +54,8 @@ class SeiyuuPipeline(object):
         find = date_format.search(start_time)
         if find:
             data['start_time'] = dateparser.parse(find.group())
-        season_label = tools.get_season(data['start_time'])
-        data["season"] = Season.objects.get_or_create(label=season_label)[0]
+        season = tools.get_season(data['start_time'], return_django_obj=True)
+        data["season"] = season[0]
         anime = Anime(**data)
         anime.save()
         return item
