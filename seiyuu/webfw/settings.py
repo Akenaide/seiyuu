@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    "compressor",
     'webfw.seiyuu_mgr',
 
 )
@@ -83,3 +84,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+COMPRESS_ROOT = "static/css/less/"

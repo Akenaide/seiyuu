@@ -4,3 +4,4 @@ django-bootstrap3==4.11.0
 "django<1.7"
 python-dateutil==2.2
 fake-factory==0.4.2
+django-compressor==1.4
