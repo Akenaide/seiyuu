@@ -55,6 +55,9 @@ ROOT_URLCONF = 'webfw.urls'
 
 WSGI_APPLICATION = 'webfw.wsgi.application'
 
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "webfw", "templates")
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

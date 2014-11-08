@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load compress %}
+
+    {% if debug %}
+        <link rel="stylesheet/less" type="text/css" media="all" href="{{ STATIC_URL }}less/style.less" />
+        <script src="{{ STATIC_URL }}js/less-1.3.0.min.js"></script>
+    {% else %}
+        {% compress css %}
+            <link rel="stylesheet" type="text/less" media="all" href="{{ STATIC_URL }}less/style.less" />
+        {% endcompress %}
+    {% endif %}
+    </head>
+    <body>
+        {% load bootstrap3 %}
+
+        {% bootstrap_css %}
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
