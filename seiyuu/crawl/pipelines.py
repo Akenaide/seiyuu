@@ -4,6 +4,8 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import re
+
 from dateutil import parser as dateparser
 from scrapy.exceptions import DropItem
 
@@ -13,6 +15,8 @@ from crawl.items import AnimeItem
 from webfw.seiyuu_mgr.models import Seiyuu
 from webfw.seiyuu_mgr.models import Anime
 from webfw.seiyuu_mgr.models import Character
+
+date_format = re.compile(r"(.*20[0-9]+)")
 
 
 class SeiyuuPipeline(object):
@@ -40,7 +44,10 @@ class SeiyuuPipeline(object):
 
     def process_anime(self, item, spider):
         data = item.as_dict()
-        data['start_time'] = dateparser.parse(data['start_time'])
+        start_time = data['start_time']
+        find = date_format.search(start_time)
+        if find:
+            data['start_time'] = dateparser.parse(find.group())
         anime = Anime(**data)
         anime.save()
         return item
