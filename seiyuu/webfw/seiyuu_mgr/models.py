@@ -16,6 +16,7 @@ class Anime(models.Model):
     start_time = models.DateField()
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
+    season = models.CharField(max_length=200)
 
     def __unicode__(self):
         return u"%s" % self.name
@@ -29,7 +30,6 @@ class Character(models.Model):
     last_name = models.CharField(max_length=30)
     seiyuu = models.ForeignKey('Seiyuu', null=True)
     anime = models.ForeignKey('Anime')
-    season = models.CharField(max_length=200)
     status = models.CharField(max_length=200, choices=STATUS)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
