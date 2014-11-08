@@ -78,7 +78,20 @@ class DuplicatesPipeline(object):
             return item
 
     def process_character(self, item, spider):
-        return item
+        data = item.as_dict()
+        current = Character.objects.filter(
+                    first_name=data.get('first_name', "noname").strip(),
+                    last_name=data.get('last_name', "noname").strip(),
+                    )
+
+        if current.exists():
+            anime = Anime.objects.get(name=data["anime"]["name"])
+            character = current[0]
+            character.anime.add(anime)
+            character.save()
+            raise DropItem
+        else:
+            return item
 
     def process_anime(self, item, spider):
         data = item.as_dict()

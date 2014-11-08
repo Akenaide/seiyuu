@@ -84,15 +84,15 @@ class SeiSpider(scrapy.Spider):
 
             character_infos, seiyuu_infos = self.get_char_and_va_infos(table)
             seiyuu['page_link'] = seiyuu_infos.get('page_link', None)
-            seiyuu['last_name'] = seiyuu_infos.get('last_name', None).strip()
-            seiyuu['first_name'] = seiyuu_infos.get('first_name', None).strip()
+            seiyuu['last_name'] = seiyuu_infos.get('last_name', "").strip()
+            seiyuu['first_name'] = seiyuu_infos.get('first_name', "").strip()
             seiyuu['image_link'] = seiyuu_infos.get('image_link', None)
             yield seiyuu
             character['anime'] = anime
             character['seiyuu'] = seiyuu
             character['page_link'] = character_infos.get('page_link', None)
-            character['last_name'] = character_infos.get('last_name', None).strip()
-            character['first_name'] = character_infos.get('first_name', None).strip()
+            character['last_name'] = character_infos.get('last_name', "").strip()
+            character['first_name'] = character_infos.get('first_name', "").strip()
             character['image_link'] = character_infos.get('image_link', None)
             character['status'] = table.xpath(".//small/text()").extract()[0]
             yield character
