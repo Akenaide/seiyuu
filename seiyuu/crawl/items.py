@@ -22,3 +22,5 @@ class AnimeItem(MyItem):
 
 class CharacterItem(MyItem):
     django_model = Character
+    anime = scrapy.Field()
+    seiyuu = scrapy.Field()

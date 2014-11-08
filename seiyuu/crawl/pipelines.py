@@ -36,9 +36,11 @@ class SeiyuuPipeline(object):
             seiyuu = None
         anime = Anime.objects.get(name=data["anime"]["name"])
 
-        data["seiyuu"], data["anime"] = seiyuu, anime
         if data['first_name']:
             character = Character(**data)
+            character.save()
+            character.anime.add(anime)
+            character.seiyuu.add(seiyuu)
             character.save()
         return item
 
