@@ -6,5 +6,5 @@ urlpatterns = patterns('webfw.seiyuu_mgr.views',
     # Examples:
     # url(r'^$', 'webfw.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', "seiyuu.seiyuu_list", name="seiyuu_list"),
+    url(r'^(?P<season>\w+)?$', "seiyuu.seiyuu_list", name="seiyuu_list"),
 )

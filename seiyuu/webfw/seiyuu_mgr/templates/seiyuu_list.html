@@ -3,7 +3,7 @@
 {% block content %}
     <ul class="list-inline">
         {% for season in seasons %}
-            <li><a href="#">{{ season.label }}</a></li>
+            <li><a href="{% url 'seiyuu_mgr:seiyuu_list' season.label %}">{{ season.label }}</a></li>
         {% endfor %}
     </ul>
     <table class="table table-striped container-fluid">

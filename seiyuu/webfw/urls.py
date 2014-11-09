@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^seiyuu/', include("webfw.seiyuu_mgr.urls"))
+    url(r'^seiyuu/', include("webfw.seiyuu_mgr.urls", "seiyuu_mgr", "seiyuu_mgr"))
 )

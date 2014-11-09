@@ -11,7 +11,7 @@ def seiyuu_list(request, season=None):
     else:
         current_season = get_object_or_404(models.Season, label=season)
 
-    seasons = models.Season.objects.all()[:4]
+    seasons = models.Season.objects.all().order_by("starting_date")[:4]
     roles = list()
 
     seiyuus = models.Seiyuu.objects.filter(
