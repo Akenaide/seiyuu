@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Django settings for webfw project.
 

@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 import os
 import requests
 import urlparse
@@ -52,7 +52,7 @@ def get_season(starting_date, return_django_obj=False):
         season_doy = 356
 
     label = "%s%i" % (season, starting_date.year)
-    if not return_django_obj:    
+    if not return_django_obj:
         return label
 
     season_date = datetime.date(starting_date.year, 1, 1)

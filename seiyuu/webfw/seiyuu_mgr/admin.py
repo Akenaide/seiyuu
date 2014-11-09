@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from django.contrib import admin
 
 from webfw.seiyuu_mgr.models import Seiyuu
