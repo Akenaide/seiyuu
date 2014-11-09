@@ -6,6 +6,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import re
+import datetime
 
 from dateutil import parser as dateparser
 from scrapy.exceptions import DropItem
@@ -45,7 +46,8 @@ class SeiyuuPipeline(object):
             character = Character(**data)
             character.save()
             character.anime.add(anime)
-            character.seiyuu.add(seiyuu)
+            if seiyuu:
+                character.seiyuu.add(seiyuu)
             character.save()
         return item
 
@@ -55,8 +57,12 @@ class SeiyuuPipeline(object):
         find = date_format.search(start_time)
         if find:
             data['start_time'] = dateparser.parse(find.group())
-        season = tools.get_season(data['start_time'], return_django_obj=True)
-        data["season"] = season[0]
+            season = tools.get_season(data['start_time'], return_django_obj=True)[0]
+        else:
+            date['start_time'] = None
+            season = None
+
+        data["season"] = season
         anime = Anime(**data)
         anime.save()
         return item

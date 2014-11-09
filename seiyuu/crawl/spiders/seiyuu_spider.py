@@ -2,14 +2,18 @@
 import os
 import re
 
+from faker import Factory
 import scrapy
 from scrapy import log
+from scrapy.http import Request
 
 from crawl import settings
 from crawl.items import SeiyuuItem
 from crawl.items import CharacterItem
 from crawl.items import AnimeItem
 from crawl import tools
+
+fake = Factory.create()
 
 class SeiSpider(scrapy.Spider):
     name = "seiyuu"
@@ -32,6 +36,10 @@ class SeiSpider(scrapy.Spider):
                 start_urls.append(tools.get_google_cache(url.strip()))
     else:
         raise OSError(urls_path, 'not found please create it')
+
+    def make_requests_from_url(self, url):
+        header = {'user-agent':fake.user_agent()}
+        return Request(url, headers=header, dont_filter=True)
 
     def infos_from_a(self, a_tag):
         link = a_tag.xpath('@href').extract()[0]

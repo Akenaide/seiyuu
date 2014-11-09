@@ -21,7 +21,7 @@ class Seiyuu(models.Model):
 
 class Anime(models.Model):
     name = models.CharField(max_length=255)
-    start_time = models.DateField()
+    start_time = models.DateField(null=True)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
     season = models.ForeignKey('Season', null=True)
