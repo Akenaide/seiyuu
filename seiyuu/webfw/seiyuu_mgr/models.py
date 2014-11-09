@@ -12,6 +12,9 @@ class Seiyuu(models.Model):
     def full_name(self):
         return u"%s %s" % (self.first_name, self.last_name)
 
+    def get_role_for_season(self, season):
+        return self.character_set.filter(anime__season=season)
+
     def __unicode__(self):
         return u"%s %s" % (self.first_name, self.last_name)
 

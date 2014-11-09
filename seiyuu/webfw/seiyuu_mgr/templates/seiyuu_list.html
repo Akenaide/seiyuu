@@ -7,7 +7,8 @@
         {% endfor %}
     </ul>
     <table class="table table-striped container-fluid">
-    {% for seiyuu in seiyuus %}
+    {% for role in roles %}
+    {% with seiyuu=role.seiyuu %}
     <tr class=" row">
         <td class="col-md-1 seiyuu-link">
             <a href="{{seiyuu.page_link}}">
@@ -17,7 +18,7 @@
         <td class="col-md-3">{{ seiyuu.full_name }}</td>
         <td class="col-md-6">
             <ul>
-                {% for character in seiyuu.character_set.all %}
+                {% for character in role.role %}
                 <li>
                     <a href="{{character.page_link}}">
                         <img src="{{character.image_link}}" alt="">
@@ -29,6 +30,7 @@
             </ul>
         </td>
     </tr>
+    {% endwith %}
     {% endfor %}
     </table>
 {% endblock %}
