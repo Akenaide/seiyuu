@@ -6,6 +6,7 @@ from faker import Factory
 import scrapy
 from scrapy import log
 from scrapy.http import Request
+import requests
 
 from crawl import settings
 from crawl.items import SeiyuuItem
@@ -19,6 +20,13 @@ class SeiSpider(scrapy.Spider):
     name = "seiyuu"
     allowed_domain = "myanimelist.net"
     urls_path = os.path.join(settings.PROJECT_ROOT, "urls.txt")
+    if settings.DEPLOY_VERSION:
+        web_urls = requests.get(settings.WEB_URL)
+        urls = open(urls_path, "w")
+        for line in web_urls.content.split("\n"):
+            urls.write(line)
+        urls.close()
+
     start_urls = list()
     base_url = "http://myanimelist.net"
     check_va_img = re.compile(r"voiceactors\/\d+\/.*")

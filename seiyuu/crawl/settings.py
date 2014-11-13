@@ -16,12 +16,15 @@ SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
 os.environ['DJANGO_SETTINGS_MODULE'] = 'webfw.settings'
 COOKIES_ENABLED = False
-DOWNLOAD_DELAY = 10
+DOWNLOAD_DELAY = 15
 DEPTH_LIMIT = 1
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+DEPLOY_VERSION = False
+WEB_URL = ""
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'seiyuu (+http://www.yourdomain.com)'
 ITEM_PIPELINES = {
         "crawl.pipelines.DuplicatesPipeline": 100,
         "crawl.pipelines.SeiyuuPipeline": 800,
     }
+

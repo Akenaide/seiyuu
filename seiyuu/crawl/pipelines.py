@@ -15,6 +15,7 @@ from crawl.items import SeiyuuItem
 from crawl.items import CharacterItem
 from crawl.items import AnimeItem
 from crawl import tools
+from crawl import settings
 from webfw.seiyuu_mgr.models import Seiyuu
 from webfw.seiyuu_mgr.models import Anime
 from webfw.seiyuu_mgr.models import Character
@@ -68,6 +69,8 @@ class SeiyuuPipeline(object):
         return item
 
     def process_item(self, item, spider):
+        if settings.DEPLOY_VERSION:
+            return item
         if isinstance(item, SeiyuuItem):
             return self.process_seiyuu(item, spider)
 
@@ -118,6 +121,8 @@ class DuplicatesPipeline(object):
             return item
 
     def process_item(self, item, spider):
+        if settings.DEPLOY_VERSION:
+            return item
         if isinstance(item, SeiyuuItem):
             return self.process_seiyuu(item, spider)
 
