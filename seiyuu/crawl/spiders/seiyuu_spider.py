@@ -24,7 +24,7 @@ class SeiSpider(scrapy.Spider):
         web_urls = requests.get(settings.WEB_URL)
         urls = open(urls_path, "w")
         for line in web_urls.content.split("\n"):
-            urls.write(line)
+            urls.writelines(line + "\n")
         urls.close()
 
     start_urls = list()
