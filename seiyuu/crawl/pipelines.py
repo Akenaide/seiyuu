@@ -55,12 +55,14 @@ class SeiyuuPipeline(object):
     def process_anime(self, item, spider):
         data = item.as_dict()
         start_time = data['start_time']
+        if "to" in start_time:
+            start_time = start_time.split("to")[0]
         find = date_format.search(start_time)
         if find:
             data['start_time'] = dateparser.parse(find.group())
             season = tools.get_season(data['start_time'], return_django_obj=True)[0]
         else:
-            date['start_time'] = None
+            data['start_time'] = None
             season = None
 
         data["season"] = season
