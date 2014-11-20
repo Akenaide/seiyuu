@@ -16,7 +16,7 @@ def seiyuu_list(request, season=None):
     roles = list()
 
     seiyuus = models.Seiyuu.objects.filter(
-                        character__anime__season=current_season)
+                        character__anime__season=current_season).order_by("first_name")
 
     for seiyuu in seiyuus.distinct():
         _dict = dict(
