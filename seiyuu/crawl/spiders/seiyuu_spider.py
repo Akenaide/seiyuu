@@ -89,7 +89,10 @@ class SeiSpider(scrapy.Spider):
         anime['name'] = response.xpath('//div/h1/text()').extract()[0].strip()
         anime['start_time'] = response.xpath("//div[span/text()='Aired:']/text()").extract()[0]
         anime['page_link'] = response.url
-        anime['image_link'] = response.xpath("//table/tr").css("td.borderClass").css("div:nth-child(1)").xpath(".//img/@src").extract()[0]
+        try:
+            anime['image_link'] = response.xpath("//table/tr").css("td.borderClass").css("div:nth-child(1)").xpath(".//img/@src").extract()[0]
+        except IndexError:
+            anime['image_link'] = None
         yield anime
         div = response.xpath("//table/tr").css("td:nth-child(2)").css("div:nth-child(3)")
         for table in div.xpath(".//table[not(@class='space_table')]"):
