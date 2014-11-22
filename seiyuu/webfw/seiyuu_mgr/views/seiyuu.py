@@ -1,14 +1,17 @@
 #!/usr/bin/env python
+import datetime
+
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
 from webfw.seiyuu_mgr import models
+from crawl import tools
 
 def seiyuu_list(request, season=None):
     """
     """
     if not season:
-        current_season = models.Season.objects.all().order_by("starting_date").first()
+        current_season = tools.get_season(datetime.datetime.now(), True)[0]
     else:
         current_season = get_object_or_404(models.Season, label=season)
 
