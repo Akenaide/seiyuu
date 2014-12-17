@@ -9,16 +9,20 @@ from webfw.seiyuu_mgr.models import Season
 
 class SeiyuuAdmin(admin.ModelAdmin):
     list_display = ("pk", "first_name", "last_name",)
+    search_fields = ("first_name", "last_name")
 
 admin.site.register(Seiyuu, SeiyuuAdmin)
 
 class AnimeAdmin(admin.ModelAdmin):
-    list_display = ("pk", "name",)
+    list_display = ("pk", "name", "season")
+    search_fields = ("name",)
 
 admin.site.register(Anime, AnimeAdmin)
 
 class CharacterAdmin(admin.ModelAdmin):
     list_display = ("pk", "first_name", "last_name")
+    search_fields = ("first_name", "last_name")
+
 admin.site.register(Character, CharacterAdmin)
 
 class SeasonAdmin(admin.ModelAdmin):
