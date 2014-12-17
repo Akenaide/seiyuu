@@ -43,3 +43,4 @@ env*
 *.sublime-*
 
 *.sqlite3
+json_file

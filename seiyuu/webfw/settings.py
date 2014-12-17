@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     "compressor",
     'webfw.seiyuu_mgr',
+    'webfw.json_importer',
 
 )
 
