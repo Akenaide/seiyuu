@@ -1,8 +1,8 @@
 Scrapy==0.24.4
-requests==2.4.3
+requests
 django-bootstrap3==4.11.0
-"django<1.7"
-python-dateutil==2.2
+django<2.1
+python-dateutil
 fake-factory==0.4.2
-django-compressor==1.4
-uwsgi==2.0.8
+django-compressor
+uwsgi
