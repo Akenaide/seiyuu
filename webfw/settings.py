@@ -58,7 +58,7 @@ ROOT_URLCONF = 'webfw.urls'
 WSGI_APPLICATION = 'webfw.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "webfw", "templates")
+    os.path.join(BASE_DIR, "webfw", "templates"),
 )
 
 # Database
