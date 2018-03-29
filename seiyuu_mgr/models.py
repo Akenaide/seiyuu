@@ -26,7 +26,7 @@ class Anime(models.Model):
     image_link = models.URLField(null=True)
     season = models.ForeignKey('Season', null=True, on_delete=models.CASCADE)
 
-    def __unicode__(self):
+    def __str__(self):
         return u"%s" % self.name
 
 class Character(models.Model):
@@ -54,5 +54,5 @@ class Season(models.Model):
     label = models.CharField(max_length=20)
     starting_date = models.DateField()
 
-    def __unicode__(self):
-        return u"%s" % self.label
+    def __str__(self):
+        return "%d - %s" % (self.id, self.label)

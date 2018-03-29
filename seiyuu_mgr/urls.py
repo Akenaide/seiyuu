@@ -6,6 +6,6 @@ from seiyuu_mgr import views
 
 app_name = "seiyuu_mgr"
 urlpatterns = (
-        path('', views.seiyuu_list, name="seiyuu_list"),
+        path('', views.seiyuu_list, name="seiyuu_list_default"),
         path('<str:season>/', views.seiyuu_list, name="seiyuu_list"),
 )
