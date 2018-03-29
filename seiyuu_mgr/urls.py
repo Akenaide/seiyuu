@@ -4,6 +4,8 @@ from django.urls import path
 
 from seiyuu_mgr import views
 
+app_name = "seiyuu_mgr"
 urlpatterns = (
-    path(r'^(?P<season>\w+)?$', views.seiyuu_list, name="seiyuu_list"),
+        path('', views.seiyuu_list, name="seiyuu_list"),
+        path('<str:season>/', views.seiyuu_list, name="seiyuu_list"),
 )

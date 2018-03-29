@@ -8,6 +8,6 @@ admin.autodiscover()
 
 urlpatterns = (
     # path(r'^admin/', include("admin.site.urls")),
-    path(r'^seiyuu/', include("seiyuu_mgr.urls")),
-    path(r'^$', RedirectView.as_view(url="/seiyuu/",), name="home"),
+    path('seiyuu/', include("seiyuu_mgr.urls")),
+    path('', RedirectView.as_view(url="/seiyuu/",), name="home"),
 )

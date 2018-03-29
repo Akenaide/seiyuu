@@ -36,7 +36,7 @@ class Character(models.Model):
     )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    seiyuu = models.ManyToManyField('Seiyuu', null=True)
+    seiyuu = models.ManyToManyField('Seiyuu')
     anime = models.ManyToManyField('Anime')
     status = models.CharField(max_length=200, choices=STATUS)
     page_link = models.URLField(null=True)

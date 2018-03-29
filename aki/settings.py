@@ -25,7 +25,9 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        "aki.yay",
+        ]
 
 
 # Application definition
@@ -37,11 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap3',
     "compressor",
     'seiyuu_mgr',
     'json_importer',
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,9 +57,23 @@ ROOT_URLCONF = 'aki.urls'
 
 WSGI_APPLICATION = 'aki.wsgi.application'
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "aki", "templates"),
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+                os.path.join(BASE_DIR, "aki", "templates"),
+                ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

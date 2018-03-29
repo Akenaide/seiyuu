@@ -19,9 +19,9 @@ def get_season(starting_date, return_django_obj=False):
     doy = starting_date.timetuple().tm_yday
 
     # "day of year" ranges for the northern hemisphere
-    spring = xrange(80, 172)
-    summer = xrange(172, 264)
-    fall = xrange(264, 355)
+    spring = range(80, 172)
+    summer = range(172, 264)
+    fall = range(264, 355)
     # winter = everything else
 
     if doy in spring:
