@@ -41,7 +41,7 @@ class Character(models.Model):
     status = models.CharField(max_length=200, choices=STATUS)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
-    last_modified = models.DateTimeField(auto_now=True, auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     @property
     def full_name(self):

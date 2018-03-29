@@ -6,8 +6,8 @@ from django.views.generic import RedirectView
 
 admin.autodiscover()
 
-urlpatterns = ('',
+urlpatterns = (
     # path(r'^admin/', include("admin.site.urls")),
-    path(r'^seiyuu/', include(("seiyuu_mgr.urls","seiyuu_mgr"), "seiyuu_mgr")),
+    path(r'^seiyuu/', include("seiyuu_mgr.urls")),
     path(r'^$', RedirectView.as_view(url="/seiyuu/",), name="home"),
 )
