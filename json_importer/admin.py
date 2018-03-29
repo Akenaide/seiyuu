@@ -4,7 +4,6 @@ from __future__ import absolute_import
 from django.contrib import admin
 
 from json_importer.models import JsonFile
-from libs import json_importer
 
 def import_json(modeladmin, request, queryset):
     for obj in queryset:
@@ -12,6 +11,6 @@ def import_json(modeladmin, request, queryset):
 
 class JsonFileAdmin(admin.ModelAdmin):
     list_display = ("label", "json_file")
-    actions = [import_json]
+    actions = []
 
 admin.site.register(JsonFile, JsonFileAdmin)

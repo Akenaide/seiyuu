@@ -24,7 +24,7 @@ class Anime(models.Model):
     start_time = models.DateField(null=True)
     page_link = models.URLField(null=True)
     image_link = models.URLField(null=True)
-    season = models.ForeignKey('Season', null=True)
+    season = models.ForeignKey('Season', null=True, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return u"%s" % self.name
