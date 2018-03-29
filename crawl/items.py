@@ -9,7 +9,7 @@
 import scrapy
 from scrapy.contrib.djangoitem import DjangoItem
 
-from webfw.seiyuu_mgr.models import Seiyuu, Anime, Character
+from seiyuu_mgr.models import Seiyuu, Anime, Character
 
 class MyItem(DjangoItem):
     def as_dict(self):

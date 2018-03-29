@@ -4,7 +4,7 @@ import datetime
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
-from webfw.seiyuu_mgr import models
+from seiyuu_mgr import models
 from crawl import tools
 
 def seiyuu_list(request, season=None):

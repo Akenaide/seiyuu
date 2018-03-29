@@ -14,7 +14,7 @@ BOT_NAME = 'seiyuu'
 
 SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
-os.environ['DJANGO_SETTINGS_MODULE'] = 'webfw.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'aki.settings'
 COOKIES_ENABLED = False
 DOWNLOAD_DELAY = 15
 DEPTH_LIMIT = 1

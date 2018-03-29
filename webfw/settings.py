@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Django settings for webfw project.
+Django settings for aki project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -39,8 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'bootstrap3',
     "compressor",
-    'webfw.seiyuu_mgr',
-    'webfw.json_importer',
+    'seiyuu_mgr',
+    'json_importer',
 
 )
 
@@ -53,12 +53,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'webfw.urls'
+ROOT_URLCONF = 'aki.urls'
 
-WSGI_APPLICATION = 'webfw.wsgi.application'
+WSGI_APPLICATION = 'aki.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "webfw", "templates"),
+    os.path.join(BASE_DIR, "aki", "templates"),
 )
 
 # Database

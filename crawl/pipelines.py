@@ -16,10 +16,10 @@ from crawl.items import CharacterItem
 from crawl.items import AnimeItem
 from crawl import tools
 from crawl import settings
-from webfw.seiyuu_mgr.models import Seiyuu
-from webfw.seiyuu_mgr.models import Anime
-from webfw.seiyuu_mgr.models import Character
-from webfw.seiyuu_mgr.models import Season
+from seiyuu_mgr.models import Seiyuu
+from seiyuu_mgr.models import Anime
+from seiyuu_mgr.models import Character
+from seiyuu_mgr.models import Season
 
 date_format = re.compile(r"(.*20[0-9]+)")
 

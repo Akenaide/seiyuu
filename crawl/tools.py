@@ -7,7 +7,7 @@ import datetime
 from dateutil import parser, relativedelta
 from faker import Factory
 
-from webfw.seiyuu_mgr import models
+from seiyuu_mgr import models
 
 GOOGLE_CACHE_URL = "http://webcache.googleusercontent.com/search?q=cache:%s"
 

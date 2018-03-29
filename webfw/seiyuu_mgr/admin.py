@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 from django.contrib import admin
 
-from webfw.seiyuu_mgr.models import Seiyuu
-from webfw.seiyuu_mgr.models import Anime
-from webfw.seiyuu_mgr.models import Character
-from webfw.seiyuu_mgr.models import Season
+from seiyuu_mgr.models import Seiyuu
+from seiyuu_mgr.models import Anime
+from seiyuu_mgr.models import Character
+from seiyuu_mgr.models import Season
 
 
 class SeiyuuAdmin(admin.ModelAdmin):

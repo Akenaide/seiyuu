@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 from django.contrib import admin
 
-from webfw.json_importer.models import JsonFile
+from json_importer.models import JsonFile
 from libs import json_importer
 
 def import_json(modeladmin, request, queryset):
