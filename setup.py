@@ -11,7 +11,7 @@ setup(
     install_requires = [
         "django==1.6.8",
         "fake-factory==0.4.2",
-        "requests==2.4.3",
+        "requests",
         "python-dateutils==2.2"
         ]
 )
