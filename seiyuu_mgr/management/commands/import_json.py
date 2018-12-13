@@ -12,22 +12,22 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("json_file", type=str)
-        # parser.add_argument("season", type=str)
+        parser.add_argument("season", type=str)
 
     def handle(self, *args, **options):
+        season, _ = models.Season.objects.get_or_create(label=options["season"] or "undefined")
         with open(options["json_file"], 'r') as f:
             data = json.load(f)
             for _anime in data:
-                season, _ = models.Season.objects.get_or_create(label=_anime["premiered"] or "undefined", starting_date=datetime.date.today())
                 anime, _ = models.Anime.objects.get_or_create(
                         name=_anime["title"],
                         page_link=_anime["link_canonical"],
                         season=season,
                         image_link=_anime["image_url"],
                         )
-                for _character in _anime["character"]:
+                for _character in _anime["characters"]:
                     try:
-                        seiyuu_data = [jp_seiyuu for jp_seiyuu in _character["voice_actor"] if jp_seiyuu["language"] == "Japanese"][0]
+                        seiyuu_data = [jp_seiyuu for jp_seiyuu in _character["voice_actors"] if jp_seiyuu["language"] == "Japanese"][0]
                     except IndexError:
                         continue
                     seiyuu, _ = models.Seiyuu.objects.get_or_create(
