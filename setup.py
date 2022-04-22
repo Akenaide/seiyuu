@@ -9,7 +9,7 @@ setup(
     data_files = [( '.', ['urls.txt']),],
     entry_points = {'scrapy': ['settings = crawl.settings']},
     install_requires = [
-        "django==2.2.24",
+        "django==2.2.28",
         "fake-factory==0.4.2",
         "requests",
         "python-dateutils==2.2"
