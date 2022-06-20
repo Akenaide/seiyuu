@@ -1,4 +1,4 @@
-Scrapy==0.24.4
+Scrapy==2.6.1
 requests
 django-bootstrap3==4.11.0
 django<2.3
